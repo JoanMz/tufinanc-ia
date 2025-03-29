@@ -1,13 +1,13 @@
 import os
 import requests
 from pathlib import Path
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 import io
 from typing import Tuple, Optional
 
 # Configuración
-env_path = Path(__file__).parent.parent.parent / 'scripts' / '.env'
-load_dotenv(dotenv_path=env_path)
+# env_path = Path(__file__).parent.parent.parent / 'scripts' / '.env'
+# load_dotenv(dotenv_path=env_path)
 
 class ElevenLabsTTSClient:
     def __init__(self):
