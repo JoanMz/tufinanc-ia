@@ -51,3 +51,9 @@ class ElevenLabsTTSClient:
             
         except Exception as e:
             return None, f"Error en conversión: {str(e)}"
+        
+# Instancias del objeto
+obj = ElevenLabsTTSClient()
+
+#llamas a la funcion
+obj.text_to_speech("texto", "voice_id", "model_id")
