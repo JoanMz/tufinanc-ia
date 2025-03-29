@@ -1,0 +1,16 @@
+services:
+  lovabledb:
+    image: postgres:latest
+    container_name: lovabledb
+    environment:
+      POSTGRES_USER: lovable
+      POSTGRES_PASSWORD: lovable
+      POSTGRES_DB: lovable
+    ports:
+      - "5432:5432"
+    volumes:
+      - lovabledb_data:/var/lib/postgresql/data
+      - ../eschemas/init.sql:/docker-entrypoint-initdb.d/init.sql
+volumes:
+  lovabledb_data:
+    driver: local
