@@ -1,0 +1,38 @@
+import os
+from supabase import create_client, Client
+from elevenlabs import set_api_key, generate, save
+from dotenv import load_dotenv
+
+load_dotenv('../scripts/.env.example')
+
+# Configuración
+ELEVENLABS_API_KEY = os.getenv('ELEVENLABS_API_KEY')
+SUPABASE_URL = os.getenv('SUPABASE_URL')
+SUPABASE_KEY = os.getenv('SUPABASE_KEY')
+
+def transcribe_audio(audio_path: str) -> str:
+    """Transcribe audio using ElevenLabs API"""
+    set_api_key(ELEVENLABS_API_KEY)
+    
+    # En un entorno real usarías la API de transcripción
+    # Esta es una implementación simulada
+    with open(audio_path, 'rb') as audio_file:
+        # Simulación de transcripción
+        return "Esta es una transcripción de ejemplo del audio."
+
+def store_transcription(text: str) -> dict:
+    """Store transcription in Supabase"""
+    supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+    
+    response = supabase.table('voice_transcriptions').insert({
+        "text": text,
+        "status": "processed"
+    }).execute()
+    
+    return response.data
+
+if __name__ == "__main__":
+    audio_file = "sample_audio.mp3"  # Cambiar por tu archivo
+    transcription = transcribe_audio(audio_file)
+    result = store_transcription(transcription)
+    print(f"Transcripción almacenada con ID: {result[0]['id']}")
