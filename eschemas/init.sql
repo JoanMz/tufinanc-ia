@@ -39,6 +39,15 @@ CREATE TABLE IF NOT EXISTS financelive.investments (
     CONSTRAINT fk_investments_user FOREIGN KEY (user_id) REFERENCES financelive.users(id) ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS financelive.spendings (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    amount DECIMAL(10, 2) NOT NULL,
+    description_ VARCHAR(255) NOT NULL,
+    date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_spendings_user FOREIGN KEY (user_id) REFERENCES financelive.users(id) ON DELETE CASCADE
+);
+
 CREATE TABLE IF NOT EXISTS financelive.incomes (
     id SERIAL PRIMARY KEY,
     user_id INT NOT NULL,
@@ -58,5 +67,16 @@ CREATE TABLE IF NOT EXISTS financelive.periodic_incomes (
     date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     date_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_periodic_incomes_user FOREIGN KEY (user_id) REFERENCES financelive.users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS financelive.financial_goals (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    amount DECIMAL(10, 2) NOT NULL,
+    description_ VARCHAR(255) NOT NULL,
+    status_ BOOLEAN NOT NULL,
+    date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    date_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_financial_goals_user FOREIGN KEY (user_id) REFERENCES financelive.users(id) ON DELETE CASCADE
 );
 
