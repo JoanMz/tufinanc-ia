@@ -1,4 +1,4 @@
-.env
+*.env
 *lovablevenv
 *__pycache__
 *tufinanc-audios
