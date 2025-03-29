@@ -59,3 +59,4 @@ CREATE TABLE IF NOT EXISTS financelive.periodic_incomes (
     date_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_periodic_incomes_user FOREIGN KEY (user_id) REFERENCES financelive.users(id) ON DELETE CASCADE
 );
+
