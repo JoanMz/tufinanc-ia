@@ -1,0 +1,7 @@
+{
+    "dependencies": "reqirements.txt",
+    "graphs":{
+        "Emeraltest": "./Agent/graph.py:graph"
+    },
+    "python_version": "3.12"
+}
