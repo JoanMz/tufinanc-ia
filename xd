@@ -1,0 +1,20 @@
+CREATE POLICY "Allow authenticated users to select" ON "financelive"."periodic_incomes"
+FOR SELECT
+TO authenticated
+USING (true);
+
+CREATE POLICY "Allow authenticated users to insert" ON "financelive"."periodic_incomes"
+FOR INSERT
+TO authenticated
+WITH CHECK (true);
+
+CREATE POLICY "Allow authenticated users to update" ON "financelive"."periodic_incomes"
+FOR UPDATE
+TO authenticated
+USING (true)
+WITH CHECK (true);
+
+CREATE POLICY "Allow authenticated users to delete" ON "financelive"."periodic_incomes"
+FOR DELETE
+TO authenticated
+USING (true);
