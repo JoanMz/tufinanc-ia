@@ -26,7 +26,8 @@ class ElevenLabsTTSClient:
         text: str,
         voice_id: str,
         model_id: str
-    ) -> Tuple[Optional[io.BytesIO], Optional[str]]:
+    #) -> Tuple[Optional[io.BytesIO], Optional[str]]:
+    ):# -> Tuple[Optional[io.BytesIO], Optional[str]]:
         """Versión simplificada sin parámetros opcionales"""
         try:
             url = f"{self.base_url}/text-to-speech/{voice_id}"

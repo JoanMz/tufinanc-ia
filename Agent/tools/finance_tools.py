@@ -1,11 +1,13 @@
-def get_user_spend(user_email: str, db_connection: object) -> float:
+
+db_connection = None
+def get_user_spend(user_email: str) -> float:
    """
    Get the total spending of a user from the database.
    Args:
        user_email (str): The email of the user.
        db_connection: The database connection object.
        Returns:
-       float: The total spending of the user.
+       a json object with the total spent, total debts paid, and total expenses.
    """
    with db_connection.connection() as conn:
       spending = conn.execute(
@@ -45,3 +47,25 @@ def get_user_spend(user_email: str, db_connection: object) -> float:
          }
     
 
+def get_user_spend_by_category(user_email: str) -> dict:
+   """
+   Get the total spending of a user by category from the database.
+   Args:
+       user_email (str): The email of the user.
+       db_connection: The database connection object.
+       Returns:
+       a json object with the total spent by category.
+   """
+   return {"funciono"}
+
+if __name__ == "__main__":
+   import os
+   import sys
+   sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+   from src.db_pool import supa_pool
+   db_url = os.getenv("SUPABASE_CONECTION_URL")
+   pool = supa_pool(db_url).pool
+   db_connection = pool
+   print("Database connection pool created")
+   # Test the functions
+   print(get_user_spend("testuser@test.com"))
